@@ -4,10 +4,9 @@ import 'package:music_app/routes/app_pages.dart';
 import 'package:music_app/theme/color.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'app_controller.dart';
-import 'package:music_app/screens/splash/splash_page.dart';
 
-class AppPage extends GetView<AppController> {
-  const AppPage({Key? key}) : super(key: key);
+class MainPage extends GetView<AppController> {
+  const MainPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -30,9 +29,19 @@ class AppPage extends GetView<AppController> {
           theme: ThemeData.dark().copyWith(
             primaryColor: AppColors.darkTheme,
             scaffoldBackgroundColor: AppColors.darkTheme,
+            appBarTheme: const AppBarTheme(
+              centerTitle: true,
+              elevation: 0,
+              color: AppColors.darkTheme,
+              toolbarTextStyle: TextStyle(
+                color: AppColors.darkTheme,
+                fontSize: 20,
+              ),
+            ),
           ),
-          home: const SplashPage(),
+          //home: SplashPage(),
           getPages: AppPages.routes,
+          initialRoute: AppPages.initial,
         );
       },
     );

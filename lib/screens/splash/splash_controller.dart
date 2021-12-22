@@ -1,35 +1,18 @@
-import 'package:flutter/widgets.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:music_app/routes/app_pages.dart';
 
-class SplashController extends GetxController
-    with GetSingleTickerProviderStateMixin {
-  late Animation animation;
-  late AnimationController animationController;
-
-  @override
-  void onInit() {
-    //Equivalente ao initState do SteteFull
-    super.onInit();
-
-    animationController = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 1200),
-    );
-    final curveAnimation = CurvedAnimation(
-      parent: animationController,
-      curve: Curves.slowMiddle,
-    );
-
-    animation = Tween<double>(begin: 0, end: 200).animate(curveAnimation)
-      ..addListener(() => update());
-    animationController.repeat(reverse: true);
+class SplashController extends GetxController {
+  //loading está dentro de controller, pois quando estava junto com o stateful,
+  //como ele criava 10 containers animados, era carregado 10 loading, e não apenas 1
+  //dessa forma, ele é chamado apenas uma vez, e não 10 vezes, e navega para a tela
+  loading() async {
+    await Future.delayed(const Duration(seconds: 2));
+    Get.offAllNamed(Routes.login);
   }
 
-  void dispose() {
-    animationController.dispose();
-    super.dispose();
-    Get.toNamed(Routes.home);
+  @override
+  void onReady() {
+    loading();
+    super.onReady();
   }
 }

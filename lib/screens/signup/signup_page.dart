@@ -1,16 +1,15 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:music_app/routes/app_pages.dart';
+import 'package:music_app/shared/avatar_widget.dart';
 import 'package:music_app/shared/button_widget.dart';
 import 'package:music_app/shared/custom_text_field.dart';
-import 'package:music_app/shared/avatar_widget.dart';
 import 'package:music_app/shared/text_button_widget.dart';
-import 'package:music_app/theme/color.dart';
 import 'package:responsive_framework/responsive_framework.dart';
-import './login_controller.dart';
+import './signup_controller.dart';
 
-class LoginPage extends GetView<LoginController> {
-  const LoginPage({Key? key}) : super(key: key);
+class SignupPage extends GetView<SignupController> {
+  const SignupPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -40,6 +39,18 @@ class LoginPage extends GetView<LoginController> {
                           children: [
                             const CustomTextField(
                               icon: Icons.person,
+                              labelText: 'First Name',
+                              hintText: 'Enter your first name',
+                              obscureText: false,
+                            ),
+                            const CustomTextField(
+                              icon: Icons.person,
+                              labelText: 'Last Name',
+                              hintText: 'Enter your last name',
+                              obscureText: false,
+                            ),
+                            const CustomTextField(
+                              icon: Icons.person,
                               labelText: 'Username',
                               hintText: 'Enter your username',
                               obscureText: false,
@@ -50,16 +61,22 @@ class LoginPage extends GetView<LoginController> {
                               hintText: 'Enter your password',
                               obscureText: true,
                             ),
+                            const CustomTextField(
+                              icon: Icons.lock,
+                              labelText: 'Password',
+                              hintText: 'Confirm password',
+                              obscureText: true,
+                            ),
                             ButtonWidget(
                               onTap: () {},
-                              title: 'Login'.toUpperCase(),
+                              title: 'Sign Up'.toUpperCase(),
                             ),
                             TextButtonWidget(
                               onTap: () {
-                                Get.toNamed(Routes.signup);
+                                Get.toNamed(Routes.login);
                               },
-                              text: 'Não possui uma conta? ',
-                              subtitle: ' Cadastre-se',
+                              text: 'Já possui uma conta? ',
+                              subtitle: ' Faça Login',
                             ),
                           ],
                         ),
