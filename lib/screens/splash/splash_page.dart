@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
-import 'package:music_app/screens/splash/widgets/animated_containers.dart';
-import './splash_controller.dart';
+import 'widgets/animated_containers.dart';
+import 'splash_controller.dart';
 
 // ignore: must_be_immutable
 class SplashPage extends GetView<SplashController> {

@@ -1,13 +1,12 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
-import 'package:music_app/app/app_controller.dart';
-import 'package:music_app/routes/app_pages.dart';
-import 'package:music_app/shared/button_widget.dart';
-import 'package:music_app/shared/custom_text_field.dart';
-import 'package:music_app/shared/avatar_widget.dart';
-import 'package:music_app/shared/text_button_widget.dart';
+import '../../routes/app_pages.dart';
+import '../../shared/button_widget.dart';
+import '../../shared/custom_text_field.dart';
+import '../../shared/avatar_widget.dart';
+import '../../shared/text_button_widget.dart';
 import 'package:responsive_framework/responsive_framework.dart';
-import './login_controller.dart';
+import 'login_controller.dart';
 
 class LoginPage extends GetView<LoginController> {
   const LoginPage({Key? key}) : super(key: key);

@@ -1,13 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
-import 'package:music_app/app/main_page.dart';
-import 'package:music_app/theme/color.dart';
+import 'main_page.dart';
+import '../theme/color.dart';
 
 class AppController extends GetxController {
   var displayName = '';
   FirebaseAuth auth = FirebaseAuth.instance;
-  /* final _googleSignIn = GoogleSignIn();
-  var googleAcc = Rx<GoogleSignInAccount?>(null); */
   var isSignedIn = false.obs;
 
   User? get userProfile => auth.currentUser;
@@ -100,20 +98,6 @@ class AppController extends GetxController {
     }
   }
 
-  /* void signInWithGoogle() async {
-    try {
-      googleAcc.value = await _googleSignIn.signIn();
-      displayName = googleAcc.value!.displayName!;
-      isSignedIn.value = true;
-      update(); // <-- without this the isSignedin value is not updated.
-    } catch (e) {
-      Get.snackbar('Error occured!', e.toString(),
-          snackPosition: SnackPosition.BOTTOM,
-          backgroundColor: kPrimaryColor,
-          colorText: kBackgroundColor);
-    }
-  } */
-
   void resetPassword(String email) async {
     try {
       await auth.sendPasswordResetEmail(email: email);
@@ -151,7 +135,6 @@ class AppController extends GetxController {
   void signout() async {
     try {
       await auth.signOut();
-      // await _googleSignIn.signOut();
       displayName = '';
       isSignedIn.value = false;
       update();

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:music_app/app/app_controller.dart';
-import 'package:music_app/routes/app_pages.dart';
-import 'package:music_app/theme/color.dart';
+import '../../app/app_controller.dart';
+import '../../routes/app_pages.dart';
+import '../../theme/color.dart';
 
 class LoginController extends GetxController {
   AppController authCtrl = Get.put(AppController());
@@ -26,10 +26,10 @@ class LoginController extends GetxController {
       authCtrl.signIn(email, password);
       // AppController.to.nameUser = username.text;
       Get.offAndToNamed(Routes.home);
-      /*  Get.snackbar("Sucesso !", "Bem Vindo",
+      Get.snackbar("Sucesso !", "Bem Vindo",
           backgroundColor: AppColors.green,
           snackPosition: SnackPosition.TOP,
-          colorText: AppColors.white); */
+          colorText: AppColors.white);
     } else {
       Get.snackbar("Erro !", "Dados Incorretos",
           backgroundColor: AppColors.red,

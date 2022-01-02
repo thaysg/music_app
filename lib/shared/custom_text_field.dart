@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:music_app/theme/color.dart';
+import '../theme/color.dart';
 
 class CustomTextField extends StatelessWidget {
   const CustomTextField({

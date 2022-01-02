@@ -2,13 +2,14 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:music_app/app/app_bindings.dart';
-import 'package:music_app/routes/app_pages.dart';
-import 'package:music_app/theme/color.dart';
+import 'app/app_bindings.dart';
+import 'routes/app_pages.dart';
+import 'theme/color.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'app/main_page.dart';
 
-/* void main() async {
+void main() async {
+  // Firebase init
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   SystemChrome.setPreferredOrientations([
@@ -17,14 +18,6 @@ import 'app/main_page.dart';
   ]);
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
       overlays: [SystemUiOverlay.bottom, SystemUiOverlay.top]);
-  runApp(const MainPage());
-}
- */
-
-void main() async {
-  // Firebase init
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 

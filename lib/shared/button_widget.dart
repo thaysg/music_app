@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:music_app/theme/color.dart';
-import 'package:music_app/theme/text_style.dart';
+import '../theme/color.dart';
+import '../theme/text_style.dart';
 
 class ButtonWidget extends StatelessWidget {
   const ButtonWidget({Key? key, required this.onTap, required this.title})
