@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:music_app/theme/color.dart';
+import 'color.dart';
 
 class AppTextStyles {
   static TextStyle titleLogin = const TextStyle(

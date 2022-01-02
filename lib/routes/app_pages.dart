@@ -1,10 +1,12 @@
 import 'package:get/get.dart';
-import 'package:music_app/screens/login/login_bindings.dart';
-import 'package:music_app/screens/login/login_page.dart';
-import 'package:music_app/screens/signup/signup_bindings.dart';
-import 'package:music_app/screens/signup/signup_page.dart';
-import 'package:music_app/screens/splash/splash_bindings.dart';
-import 'package:music_app/screens/splash/splash_page.dart';
+import '../screens/home/home_bindings.dart';
+import '../screens/home/home_page.dart';
+import '../screens/login/login_bindings.dart';
+import '../screens/login/login_page.dart';
+import '../screens/signup/signup_bindings.dart';
+import '../screens/signup/signup_page.dart';
+import '../screens/splash/splash_bindings.dart';
+import '../screens/splash/splash_page.dart';
 part 'app_routes.dart';
 
 class AppPages {
@@ -34,6 +36,11 @@ class AppPages {
       binding: SignupBindings(),
       transitionDuration: const Duration(milliseconds: 500),
       transition: Transition.fadeIn,
+    ),
+    GetPage(
+      name: _Paths.home,
+      page: () => const HomePage(),
+      binding: HomeBindings(),
     ),
     /*
     GetPage(

@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:music_app/routes/app_pages.dart';
 
 class AnimatedContainers extends StatefulWidget {
   const AnimatedContainers({

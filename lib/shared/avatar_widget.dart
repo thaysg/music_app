@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:music_app/theme/color.dart';
+
+import '../theme/color.dart';
 
 class AvatarWidget extends StatelessWidget {
   const AvatarWidget({Key? key}) : super(key: key);

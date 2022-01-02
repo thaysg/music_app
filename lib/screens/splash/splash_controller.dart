@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:music_app/routes/app_pages.dart';
+import '../../routes/app_pages.dart';
 
 class SplashController extends GetxController {
   //loading está dentro de controller, pois quando estava junto com o stateful,
