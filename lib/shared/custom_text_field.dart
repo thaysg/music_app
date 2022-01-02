@@ -8,12 +8,16 @@ class CustomTextField extends StatelessWidget {
     required this.labelText,
     required this.icon,
     required this.obscureText,
+    required this.validator,
+    required this.controller,
   }) : super(key: key);
 
   final String hintText;
   final String labelText;
   final IconData icon;
   final bool obscureText;
+  final FormFieldValidator<String> validator;
+  final TextEditingController controller;
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +32,8 @@ class CustomTextField extends StatelessWidget {
           elevation: 5,
           color: AppColors.darkTheme,
           child: TextFormField(
-            // keyboardType: TextInputType.number,
+            validator: validator,
+            controller: controller,
             decoration: InputDecoration(
               labelText: labelText,
               prefixIcon: Icon(
@@ -45,27 +50,5 @@ class CustomTextField extends StatelessWidget {
         ),
       ),
     );
-    /* Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
-      child: Row(
-        children: [
-          const Icon(Icons.person),
-          TextFormField(
-            decoration: InputDecoration(
-              labelText: 'Name',
-              hintText: 'Enter your name',
-              labelStyle: const TextStyle(
-                color: AppColors.white,
-                fontSize: 16,
-              ),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(8),
-              ),
-            ),
-          ),
-        ],
-      ),
-    ) */
-    ;
   }
 }

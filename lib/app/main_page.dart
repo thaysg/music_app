@@ -1,6 +1,9 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:music_app/app/app_bindings.dart';
 import 'package:music_app/routes/app_pages.dart';
+import 'package:music_app/screens/home/home_page.dart';
+import 'package:music_app/screens/splash/splash_page.dart';
 import 'package:music_app/theme/color.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'app_controller.dart';
@@ -10,9 +13,26 @@ class MainPage extends GetView<AppController> {
 
   @override
   Widget build(BuildContext context) {
-    return SimpleBuilder(
+    return Scaffold(
+      body: GetBuilder<AppController>(
+        builder: (_) {
+          return SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+              child: _.isSignedIn.value ? const HomePage() : SplashPage(),
+            ),
+          );
+        },
+      ),
+    );
+  }
+
+  /* @override
+  Widget build(BuildContext context) {
+    return GetBuilder<AppController>(
       builder: (_) {
         return GetMaterialApp(
+          initialBinding: AppBindings(),
           builder: (context, widget) => ResponsiveWrapper.builder(
             ClampingScrollWrapper.builder(context, widget!),
             defaultScale: true,
@@ -39,11 +59,12 @@ class MainPage extends GetView<AppController> {
               ),
             ),
           ),
-          //home: SplashPage(),
+          home: _.isSignedIn.value ? const HomePage() : SplashPage(),
+          //initialRoute: _.isSignedIn.value ? Routes.home : Routes.splash,
           getPages: AppPages.routes,
-          initialRoute: AppPages.initial,
+          //initialRoute: AppPages.initial,
         );
       },
     );
-  }
+  } */
 }

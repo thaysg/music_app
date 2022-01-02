@@ -1,11 +1,11 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:music_app/app/app_controller.dart';
 import 'package:music_app/routes/app_pages.dart';
 import 'package:music_app/shared/button_widget.dart';
 import 'package:music_app/shared/custom_text_field.dart';
 import 'package:music_app/shared/avatar_widget.dart';
 import 'package:music_app/shared/text_button_widget.dart';
-import 'package:music_app/theme/color.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import './login_controller.dart';
 
@@ -14,6 +14,7 @@ class LoginPage extends GetView<LoginController> {
 
   @override
   Widget build(BuildContext context) {
+    LoginController loginCtrl = Get.put(LoginController());
     return Scaffold(
       body: Center(
         child: ListView(
@@ -30,41 +31,59 @@ class LoginPage extends GetView<LoginController> {
                   : ResponsiveRowColumnType.ROW,
               children: [
                 const ResponsiveRowColumnItem(
-                    rowFlex: 1, child: AvatarWidget()),
+                  rowFlex: 1,
+                  child: AvatarWidget(),
+                ),
                 ResponsiveRowColumnItem(
                   rowFlex: 1,
-                  child: Column(
-                    children: [
-                      Form(
-                        child: Column(
-                          children: [
-                            const CustomTextField(
-                              icon: Icons.person,
-                              labelText: 'Username',
-                              hintText: 'Enter your username',
-                              obscureText: false,
-                            ),
-                            const CustomTextField(
-                              icon: Icons.lock,
-                              labelText: 'Password',
-                              hintText: 'Enter your password',
-                              obscureText: true,
-                            ),
-                            ButtonWidget(
-                              onTap: () {},
-                              title: 'Login'.toUpperCase(),
-                            ),
-                            TextButtonWidget(
-                              onTap: () {
-                                Get.toNamed(Routes.signup);
-                              },
-                              text: 'Não possui uma conta? ',
-                              subtitle: ' Cadastre-se',
-                            ),
-                          ],
+                  child: Form(
+                    key: loginCtrl.formKey,
+                    child: Column(
+                      children: [
+                        CustomTextField(
+                          controller: controller.emailController,
+                          validator: (value) {
+                            bool _isEmailValid = RegExp(
+                                    r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                                .hasMatch(value!);
+                            if (!_isEmailValid) {
+                              return 'Invalid email.';
+                            }
+                            return null;
+                          },
+                          icon: Icons.email,
+                          labelText: 'Email',
+                          hintText: 'Enter your email',
+                          obscureText: false,
                         ),
-                      ),
-                    ],
+                        CustomTextField(
+                          controller: controller.passwordController,
+                          validator: (value) {
+                            if (value.toString().length < 6) {
+                              return 'Password should be longer or equal to 6 characters.';
+                            }
+                            return null;
+                          },
+                          icon: Icons.lock,
+                          labelText: 'Password',
+                          hintText: 'Enter your password',
+                          obscureText: true,
+                        ),
+                        ButtonWidget(
+                          onTap: () {
+                            controller.loginButton();
+                          },
+                          title: 'Login'.toUpperCase(),
+                        ),
+                        TextButtonWidget(
+                          onTap: () {
+                            Get.toNamed(Routes.signup);
+                          },
+                          text: 'Não possui uma conta? ',
+                          subtitle: ' Cadastre-se',
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ],
